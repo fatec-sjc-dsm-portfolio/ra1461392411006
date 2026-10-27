@@ -1,0 +1,84 @@
+---
+import ProjectsCarousel from "../react/ProjectsCarousel.tsx";
+
+import animusImg from "../../assets/projects/animus.png";
+import gaiaImg from "../../assets/projects/gaia.png";
+import chronosImg from "../../assets/projects/chronos.png";
+import stockerImg from "../../assets/projects/stocker.png";
+import smartFarmingImg from "../../assets/projects/smart_farming.png";
+
+const projects = [
+    {
+        title: "Animus",
+        description:
+            "App móvel com IA para análise de petições judiciais e identificação de precedentes relevantes em bases nacionais.",
+        tags: ["Flutter", "FastAPI", "NestJS", "Machine Learning"],
+        link: "https://github.com/CtrI-Alt-Del/animus",
+        image: animusImg.src,
+        semester: "5º Semestre",
+        isLogo: true,
+    },
+    {
+        title: "Gaia",
+        description:
+            "Plataforma de monitoramento de estações meteorológicas de baixo custo com dashboards interativos e componente educacional.",
+        tags: ["Remix", "NestJS", "MongoDB", "MQTT"],
+        link: "https://github.com/CtrI-Alt-Del/gaia",
+        image: gaiaImg.src,
+        semester: "4º Semestre",
+        isLogo: true,
+    },
+    {
+        title: "Chronos",
+        description:
+            "Sistema web de gestão de ponto eletrônico com cálculo automático de horas, gestão de ausências e relatórios detalhados.",
+        tags: ["React", "Next.js", "TypeScript", "TailwindCSS"],
+        link: "https://github.com/CtrI-Alt-Del/chronos",
+        image: chronosImg.src,
+        semester: "3º Semestre",
+        isLogo: true,
+    },
+    {
+        title: "Stocker",
+        description:
+            "Aplicação web para gerenciamento de estoque com controle de inventário em tempo real e controle de permissões por perfil.",
+        tags: ["React", "TypeScript", "Node.js"],
+        link: "https://github.com/CtrI-Alt-Del/stocker",
+        image: stockerImg.src,
+        semester: "2º Semestre",
+        isLogo: true,
+    },
+    {
+        title: "Smart Farming",
+        description:
+            "Dashboard web para monitoramento de estufa inteligente, com visualização de dados de sensores em gráficos interativos.",
+        tags: ["Python", "Flask", "HTMX", "MySQL"],
+        link: "https://github.com/CtrI-Alt-Del/smart-farming",
+        image: smartFarmingImg.src,
+        semester: "1º Semestre",
+    },
+];
+---
+
+<section id="projects" class="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Heading -->
+        <div class="mb-16 text-center">
+            <span
+                class="text-primary font-mono text-sm tracking-wider uppercase"
+                >Projetos Acadêmicos</span
+            >
+            <h2
+                class="text-3xl sm:text-4xl md:text-5xl font-bold mt-2 text-foreground"
+            >
+                Projetos em destaque<span class="text-primary">.</span>
+            </h2>
+            <p class="text-muted-foreground mt-4 max-w-xl mx-auto">
+                Projetos desenvolvidos em equipe ao longo da graduação na FATEC, do mais recente ao mais antigo
+            </p>
+        </div>
+
+        <!-- Carousel -->
+        <ProjectsCarousel client:visible projects={projects} />
+    </div>
+</section>
