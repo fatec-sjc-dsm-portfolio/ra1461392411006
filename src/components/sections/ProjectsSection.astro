@@ -1,11 +1,12 @@
 ---
-import ProjectsCarousel from "../react/ProjectsCarousel.tsx";
+import ProjectsShowcase from "../react/ProjectsShowcase.tsx";
 
 import animusImg from "../../assets/projects/animus.png";
 import gaiaImg from "../../assets/projects/gaia.png";
 import chronosImg from "../../assets/projects/chronos.png";
 import stockerImg from "../../assets/projects/stocker.png";
 import smartFarmingImg from "../../assets/projects/smart_farming.png";
+import omniverseImg from "../../assets/projects/omniverse.png";
 import { animusDetails } from "../../data/projects/animus";
 import { gaiaDetails } from "../../data/projects/gaia";
 import { chronosDetails } from "../../data/projects/chronos";
@@ -73,23 +74,10 @@ const projects: Project[] = [
 
 <section id="projects" class="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8">
     <div class="max-w-6xl mx-auto">
-        <!-- Heading -->
-        <div class="mb-16 text-center">
-            <span
-                class="text-primary font-mono text-sm tracking-wider uppercase"
-                >Projetos Acadêmicos API</span
-            >
-            <h2
-                class="text-3xl sm:text-4xl md:text-5xl font-bold mt-2 text-foreground"
-            >
-                Projetos em destaque<span class="text-primary">.</span>
-            </h2>
-            <p class="text-muted-foreground mt-4 max-w-xl mx-auto">
-                Projetos desenvolvidos em equipe ao longo da graduação na FATEC, do mais recente ao mais antigo
-            </p>
-        </div>
-
-        <!-- Carousel -->
-        <ProjectsCarousel client:visible projects={projects} />
+        <ProjectsShowcase
+            client:visible
+            projects={projects}
+            omniverseImage={omniverseImg.src}
+        />
     </div>
 </section>
