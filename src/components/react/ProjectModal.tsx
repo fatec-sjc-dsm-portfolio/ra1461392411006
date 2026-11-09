@@ -164,6 +164,25 @@ export default function ProjectModal({ project, onClose, returnFocusTo }: Projec
                             </ul>
                         </section>
                     )}
+                    {details.documents && details.documents.length > 0 && (
+                        <section>
+                            <h3 className="mb-2 text-lg font-semibold">Documentação do projeto</h3>
+                            <ul className="list-disc space-y-2 pl-5 leading-relaxed">
+                                {details.documents.map((document) => (
+                                    <li key={document.url}>
+                                        <a
+                                            href={document.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-primary"
+                                        >
+                                            {document.label}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
+                    )}
                     <a
                         href={project.link}
                         target="_blank"

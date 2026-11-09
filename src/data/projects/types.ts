@@ -14,6 +14,10 @@ export interface ProjectDetails {
         title: string;
         description: string;
     }[];
+    documents?: {
+        label: string;
+        url: string;
+    }[];
 }
 
 export interface Project {
