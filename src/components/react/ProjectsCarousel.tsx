@@ -1,15 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import ProjectCard from "./ProjectCard";
-
-interface Project {
-    title: string;
-    description: string;
-    tags: string[];
-    link: string;
-    image?: string;
-    semester?: string;
-    isLogo?: boolean;
-}
+import ProjectModal from "./ProjectModal";
+import type { Project } from "../../data/projects/types";
 
 const GAP = 24; // px — matches gap-6
 const DURATION = 480; // ms
@@ -27,6 +19,15 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
     const [leftOp, setLeftOp] = useState(0);
     const [rightOp, setRightOp] = useState(0);
     const [opTransition, setOpTransition] = useState(false);
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const modalTriggerRef = useRef<HTMLButtonElement | null>(null);
+
+    const openProject = useCallback((project: Project, trigger: HTMLButtonElement) => {
+        modalTriggerRef.current = trigger;
+        setSelectedProject(project);
+    }, []);
+
+    const closeProject = useCallback(() => setSelectedProject(null), []);
 
     const mod = useCallback((i: number) => ((i % n) + n) % n, [n]);
 
@@ -129,7 +130,10 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
                 <div style={trackStyle}>
                     {slots.map((projectIdx, slotIdx) => (
                         <div key={slotIdx} style={slotStyle(slotIdx)}>
-                            <ProjectCard {...projects[projectIdx]} />
+                            <ProjectCard
+                                {...projects[projectIdx]}
+                                onOpen={(trigger) => openProject(projects[projectIdx], trigger)}
+                            />
                         </div>
                     ))}
                 </div>
@@ -174,6 +178,13 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
                     </svg>
                 </button>
             </div>
+            {selectedProject && (
+                <ProjectModal
+                    project={selectedProject}
+                    onClose={closeProject}
+                    returnFocusTo={modalTriggerRef.current}
+                />
+            )}
         </div>
     );
 }

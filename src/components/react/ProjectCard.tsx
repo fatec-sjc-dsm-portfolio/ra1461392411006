@@ -1,23 +1,22 @@
-import { GlassEffect, GlassFilter } from "../liquid-glass";
+import { GlassEffect } from "../liquid-glass";
+import type { Project } from "../../data/projects/types";
 
-interface ProjectCardProps {
-    title: string;
-    description: string;
-    tags: string[];
-    link?: string;
-    image?: string;
-    semester?: string;
-    isLogo?: boolean;
+interface ProjectCardProps extends Project {
+    onOpen: (trigger: HTMLButtonElement) => void;
 }
 
-export default function ProjectCard({ title, description, tags, link, image, semester, isLogo }: ProjectCardProps) {
+export default function ProjectCard({ title, description, tags, details, image, semester, isLogo, onOpen }: ProjectCardProps) {
+    const remainingTechnologies =
+        details.technologies.reduce((count, group) => count + group.items.length, 0) - tags.length;
+
     return (
         <GlassEffect className="rounded-2xl w-full">
-            <a
-                href={link || '#'}
-                target={link ? '_blank' : undefined}
-                rel={link ? 'noopener noreferrer' : undefined}
-                className="group block w-full"
+            <button
+                type="button"
+                onClick={(event) => onOpen(event.currentTarget)}
+                aria-haspopup="dialog"
+                aria-label={`Ver detalhes do projeto ${title}`}
+                className="group block w-full text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary"
             >
                 {/* Image */}
                 <div className={`aspect-video flex items-center justify-center overflow-hidden rounded-t-2xl relative ${isLogo ? 'bg-white/90' : 'bg-black/20'}`}>
@@ -44,8 +43,8 @@ export default function ProjectCard({ title, description, tags, link, image, sem
                         <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                             {title}
                         </h3>
-                        <svg className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7v10" />
+                        <svg className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4h4m8 0h4v4M4 16v4h4m8 0h4v-4" />
                         </svg>
                     </div>
                     <p className="text-muted-foreground text-sm leading-relaxed mb-4">
@@ -60,9 +59,14 @@ export default function ProjectCard({ title, description, tags, link, image, sem
                                 {tag}
                             </span>
                         ))}
+                        {remainingTechnologies > 0 && (
+                            <span className="px-2.5 py-1 text-xs font-mono bg-primary/10 border border-primary/20 rounded-md text-primary">
+                                +{remainingTechnologies} tecnologias
+                            </span>
+                        )}
                     </div>
                 </div>
-            </a>
+            </button>
         </GlassEffect>
     );
 }

@@ -6,17 +6,24 @@ import gaiaImg from "../../assets/projects/gaia.png";
 import chronosImg from "../../assets/projects/chronos.png";
 import stockerImg from "../../assets/projects/stocker.png";
 import smartFarmingImg from "../../assets/projects/smart_farming.png";
+import { animusDetails } from "../../data/projects/animus";
+import { gaiaDetails } from "../../data/projects/gaia";
+import { chronosDetails } from "../../data/projects/chronos";
+import { stockerDetails } from "../../data/projects/stocker";
+import { smartFarmingDetails } from "../../data/projects/smart-farming";
+import type { Project } from "../../data/projects/types";
 
-const projects = [
+const projects: Project[] = [
     {
         title: "Animus",
         description:
             "App móvel com IA para análise de petições judiciais e identificação de precedentes relevantes em bases nacionais.",
-        tags: ["Flutter", "FastAPI", "NestJS", "Machine Learning"],
+        tags: ["Flutter", "FastAPI", "Qdrant", "Google Gemini"],
         link: "https://github.com/CtrI-Alt-Del/animus",
         image: animusImg.src,
         semester: "5º Semestre",
         isLogo: true,
+        details: animusDetails,
     },
     {
         title: "Gaia",
@@ -27,35 +34,39 @@ const projects = [
         image: gaiaImg.src,
         semester: "4º Semestre",
         isLogo: true,
+        details: gaiaDetails,
     },
     {
         title: "Chronos",
         description:
             "Sistema web de gestão de ponto eletrônico com cálculo automático de horas, gestão de ausências e relatórios detalhados.",
-        tags: ["React", "Next.js", "TypeScript", "TailwindCSS"],
+        tags: ["Next.js", "TypeScript", "Spring", "Neon"],
         link: "https://github.com/CtrI-Alt-Del/chronos",
         image: chronosImg.src,
         semester: "3º Semestre",
         isLogo: true,
+        details: chronosDetails,
     },
     {
         title: "Stocker",
         description:
             "Aplicação web para gerenciamento de estoque com controle de inventário em tempo real e controle de permissões por perfil.",
-        tags: ["React", "TypeScript", "Node.js"],
+        tags: ["Next.js", "Fastify", "Prisma", "Supabase"],
         link: "https://github.com/CtrI-Alt-Del/stocker",
         image: stockerImg.src,
         semester: "2º Semestre",
         isLogo: true,
+        details: stockerDetails,
     },
     {
         title: "Smart Farming",
         description:
             "Dashboard web para monitoramento de estufa inteligente, com visualização de dados de sensores em gráficos interativos.",
-        tags: ["Python", "Flask", "HTMX", "MySQL"],
+        tags: ["Flask", "HTMX", "ApexCharts", "MySQL"],
         link: "https://github.com/CtrI-Alt-Del/smart-farming",
         image: smartFarmingImg.src,
         semester: "1º Semestre",
+        details: smartFarmingDetails,
     },
 ];
 ---
@@ -66,7 +77,7 @@ const projects = [
         <div class="mb-16 text-center">
             <span
                 class="text-primary font-mono text-sm tracking-wider uppercase"
-                >Projetos Acadêmicos</span
+                >Projetos Acadêmicos API</span
             >
             <h2
                 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-2 text-foreground"
