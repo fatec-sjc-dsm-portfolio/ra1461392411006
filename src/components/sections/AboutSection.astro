@@ -101,6 +101,42 @@ const skills = [
     { name: "Atlassian", icon: atlassianIcon },
     { name: "Bitbucket", icon: bitbucketIcon },
 ];
+
+const interestAreas = [
+    {
+        title: "Gestão de produto e equipes ágeis",
+        description:
+            "Aprofundar minha atuação como Product Owner, conectando necessidades das pessoas, prioridades do produto e entregas da equipe com práticas de Scrum.",
+    },
+    {
+        title: "Dev Full Stack e Arquiteto de Sistemas",
+        description:
+            "Construir soluções de ponta a ponta, da interface ao backend, integrando dados, serviços e boas práticas de desenvolvimento.",
+    },
+    {
+        title: "UI/UX",
+        description:
+            "Criar experiências digitais claras e intuitivas, com atenção à pesquisa, prototipação, acessibilidade e validação das interfaces.",
+    },
+];
+
+const personalGoals = [
+    {
+        title: "Concluir a graduação",
+        description:
+            "Finalizar o curso de Desenvolvimento de Software Multiplataforma na FATEC São José dos Campos.",
+    },
+    {
+        title: "Ser efetivado na CI&T",
+        description:
+            "Transformar meu estágio atual em uma oportunidade de atuação efetiva e ampliar minhas responsabilidades na equipe.",
+    },
+    {
+        title: "Conquistar a certificação CCAR-F da Anthropic",
+        description:
+            "Continuar meus estudos para obter a 'Claude Certified Architect-Foundations' e aprofundar meus conhecimentos em soluções com Claude.",
+    },
+];
 ---
 
 <!-- Overlay that hides the shader behind About section -->
@@ -201,6 +237,74 @@ const skills = [
                         </p>
                     </div>
                 </div>
+            </div>
+            <!-- Interesses e objetivos -->
+            <div class="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+                <article
+                    class="relative h-full overflow-hidden rounded-2xl border border-border bg-card/50 p-6 shadow-lg shadow-black/5 sm:p-8"
+                    aria-labelledby="interest-areas-title"
+                >
+                    <div
+                        class="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-primary/70 via-primary/20 to-transparent"
+                        aria-hidden="true"
+                    ></div>
+                    <p class="mb-2 font-mono text-xs uppercase tracking-wider text-primary">
+                        Onde quero atuar
+                    </p>
+                    <h3
+                        id="interest-areas-title"
+                        class="mb-6 text-2xl font-semibold text-foreground"
+                    >
+                        Áreas de interesse
+                    </h3>
+                    <ul class="space-y-5">
+                        {
+                            interestAreas.map((area) => (
+                                <li class="border-l-2 border-primary/40 pl-4">
+                                    <h4 class="font-semibold text-foreground">
+                                        {area.title}
+                                    </h4>
+                                    <p class="mt-1 text-sm leading-relaxed text-muted-foreground">
+                                        {area.description}
+                                    </p>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </article>
+
+                <article
+                    class="relative h-full overflow-hidden rounded-2xl border border-border bg-card/50 p-6 shadow-lg shadow-black/5 sm:p-8"
+                    aria-labelledby="personal-goals-title"
+                >
+                    <div
+                        class="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-primary/70 via-primary/20 to-transparent"
+                        aria-hidden="true"
+                    ></div>
+                    <p class="mb-2 font-mono text-xs uppercase tracking-wider text-primary">
+                        Próximos passos
+                    </p>
+                    <h3
+                        id="personal-goals-title"
+                        class="mb-6 text-2xl font-semibold text-foreground"
+                    >
+                        Objetivos pessoais
+                    </h3>
+                    <ul class="space-y-5">
+                        {
+                            personalGoals.map((goal) => (
+                                <li class="border-l-2 border-primary/40 pl-4">
+                                    <h4 class="font-semibold text-foreground">
+                                        {goal.title}
+                                    </h4>
+                                    <p class="mt-1 text-sm leading-relaxed text-muted-foreground">
+                                        {goal.description}
+                                    </p>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </article>
             </div>
             <!-- Soft Skills -->
             <div class="mt-20">
