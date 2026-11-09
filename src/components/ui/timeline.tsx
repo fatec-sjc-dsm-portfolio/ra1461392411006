@@ -51,7 +51,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           Minha Jornada
         </h2>
         <p className="text-muted-foreground text-sm md:text-base max-w-sm">
-          Uma linha do tempo das minhas experiências profissionais e acadêmicas.
+          Uma linha do tempo das empresas onde trabalhei.
         </p>
       </div>
 
